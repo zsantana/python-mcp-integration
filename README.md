@@ -43,6 +43,19 @@ uv tool update-shell
 export OPENAI_API_KEY="sua-api-key-aqui"
 ```
 
+### 4. Configuração do MCP Inspector (Opcional)
+
+Para debugging e inspeção do protocolo MCP:
+
+```bash
+# Limpar cache do npm e instalar o inspector MCP
+npm cache clean --force
+npm install -g @modelcontextprotocol/inspector
+
+# Executar o inspector para monitorar comunicações MCP
+mcp-inspector --url http://localhost:8080/sse
+```
+
 ## 📁 Estrutura do Projeto
 
 ```
@@ -190,6 +203,35 @@ Ajustar timeout nas configurações do MCP local:
 ```python
 # Em mcp_local.py, linha ~15
 r = requests.get(url, timeout=30)  # Aumentar de 5 para 30 segundos
+```
+
+### Debugging com MCP Inspector
+Para monitorar e debugar comunicações MCP em tempo real:
+
+```bash
+# Instalar o inspector (se ainda não instalado)
+npm install -g @modelcontextprotocol/inspector
+
+# Iniciar o inspector
+mcp-inspector --url http://localhost:8080/sse
+
+# O inspector permite:
+# - Visualizar mensagens JSON-RPC em tempo real
+# - Monitorar chamadas de ferramentas
+# - Debugar problemas de comunicação MCP
+# - Inspecionar payloads de request/response
+```
+
+### Verificar Processos em Execução
+Para verificar se o MCP Inspector ou outros processos estão rodando:
+
+```bash
+# Verificar se há processos Node.js ou Python ativos nas portas
+lsof -i -P | grep -E 'node|python'
+
+# Exemplo de saída esperada:
+# node    12345 user   20u  IPv4 0x1234  0t0  TCP *:8080 (LISTEN)
+# python  12346 user   21u  IPv4 0x5678  0t0  TCP *:3000 (LISTEN)
 ```
 
 ## 🤝 Contribuindo
