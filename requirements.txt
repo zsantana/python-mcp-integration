@@ -1,0 +1,16 @@
+# AutoGen base + MCP tools
+autogen-ext[mcp]>=0.2.2
+autogen-agentchat>=0.1.0
+
+# Cliente OpenAI
+openai>=1.0.0
+
+# HTTP requests
+requests>=2.31.0
+
+# Tipagem e validação
+json-schema-to-pydantic>=0.2.2
+
+# Asyncio extras (opcional, mas recomendado para AutoGen)
+aiohttp>=3.8.0
+tiktoken
